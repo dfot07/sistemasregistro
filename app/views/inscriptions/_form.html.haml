@@ -1,0 +1,35 @@
+.container.signup-box
+  .row
+    .col.s12.l12
+      = simple_form_for @inscription do |f|
+        -if @inscription.errors.any?
+          #error_explanation
+            %h3.chip
+              = "#{@inscription.errors.count} errores encontrados:"
+              <i class="material-icons">close</i>
+            %ul
+              -@inscription.errors.full_messages.each do |msg|
+                %li.chip.waves-effect.waves-light.btn-large
+                  =msg
+                  <i class="material-icons">close</i>
+        .row
+          .col.s12.l12
+            .section
+              .row
+                .col.s12.l12
+                  .input-field.col.s12.l12
+                    =f.text_field :num_inscription
+                    %label{for: "#{:num_inscription}", class: "active"} Número de Inscripción
+                  .input-field.col.s12.l12
+                    =f.text_field :act
+                    %label{for: "#{:act}", class: "active"} Tipo de Acto o Contrato
+                  .input-field.col.s12.l12
+                    =f.text_field :date_inscription
+                    %label{for: "#{:date_inscription}", class: "active"} Año de Inscripción
+              .row
+                .col.s12.l6
+                  %button{class:"btn btn-fb", type:"submit", name:"action"}
+                    Guardar<i class="material-icons right">send</i>
+                .col.s12.l6
+                  =link_to "Cancelar", inscriptions_path, class: "btn btn-fb"
+

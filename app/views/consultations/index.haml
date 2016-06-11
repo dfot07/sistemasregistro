@@ -1,0 +1,25 @@
+%h1 Listing Appearers
+
+%table
+  %thead
+    %tr
+      %th Número de Inscripción
+      %th Acto o Contraro
+      %th Año de Inscripción
+      %th Apellidos
+      %th Nombres
+      %th Calidad
+      %th Tipo de Interveniente
+      %th Persona que Representa o le Representa
+
+  %tbody
+    -@appearers.each do |appearer|
+      %tr
+        %td= appearer.inscription.num_inscription
+        %td= appearer.inscription.act
+        %td= appearer.inscription.date_inscription
+        %td= appearer.last_name
+        %td= appearer.name
+        %td= appearer.type_appearer
+        %td= appearer.type_representative
+        %td= appearer.representative

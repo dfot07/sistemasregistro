@@ -1,0 +1,38 @@
+=render "layouts/navbar"
+
+.container.grey.lighten-3.signup-box
+  .row
+    .col.s12.l12
+      .row
+        .col.s12.l12
+          %h1.center-align Índices
+        .col.s12.l12
+          = link_to new_inscription_path, class: "btn btn-fb" do
+            <i class="medium material-icons left">note_add</i>Nueva Inscripción
+      .row
+        .col.s6.l12
+          %table.striped.highlight.centered.responsive-table
+            %thead
+              %tr
+                %th Usuario
+                %th Ń° Inscripción
+                %th Año de Inscripción
+                %th Tipo de Acto/Contrato
+                %th
+                %th
+                %th
+
+            %tbody
+              - @inscriptions.each do |inscription|
+                %tr
+                  %td= inscription.user.email
+                  %td= inscription.num_inscription
+                  %td= inscription.date_inscription
+                  %td= inscription.act
+                  %td= link_to 'Ver', inscription
+                  %td= link_to 'Editar', edit_inscription_path(inscription)
+                  %td
+                    = link_to inscription, :method => :delete, :data => { :confirm => 'Are you sure?' } do
+                      <i class="small material-icons left">delete</i>
+
+=render "layouts/footer"

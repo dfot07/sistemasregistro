@@ -1,0 +1,12 @@
+-if current_user
+  = simple_form_for [@inscription, @appearer], {remote: true, html: { id: "appearer-form", :"data-type" => "json" }} do |f|
+    = f.error_notification
+    
+    .form-inputs
+    = f.input :last_name
+    = f.input :name
+    = f.input :type_appearer
+    = f.input :type_representative
+    = f.input :representative
+    .form-actions
+    = f.button :submit

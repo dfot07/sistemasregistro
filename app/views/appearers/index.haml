@@ -1,0 +1,25 @@
+=render "layouts/navbar"
+%h1 Listing Appearers
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Num inscription
+      %th Last Name
+      %th Name
+      %th
+      %th
+      %th
+
+  %tbody
+    -@inscription.appearers.each do |appearer|
+      %tr
+        %td= appearer.user.email
+        %td= appearer.inscription.num_inscription
+        %td= appearer.last_name
+        %td= appearer.name
+
+%br
+
+=render "layouts/footer"

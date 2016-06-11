@@ -1,0 +1,74 @@
+=render "layouts/navbar"
+%p
+  %b User:
+  = @inscription.user
+%p
+  %b Num inscription:
+  = @inscription.num_inscription
+%p
+  %b Act:
+  = @inscription.act
+%p
+  %b Date inscription:
+  = @inscription.date_inscription
+
+= link_to 'Edit', edit_inscription_path(@inscription)
+\|
+= link_to 'Back', inscriptions_path
+\|
+= link_to 'Ingresar Compareciente', new_inscription_appearer_path(@inscription)
+
+.container
+  .row
+    .col.s12.l12
+    %h1 Listing Vendedores
+    %table#appearer-box-v
+      %thead
+        %tr
+          %th User
+          %th Num inscription
+          %th Last Name
+          %th Name
+          %th Tipo de Compareciente
+          %th
+          %th
+
+      %tbody
+        -@inscription.appearers.each do |appearer|
+          -if(appearer.type_appearer == "VENDEDOR")
+            %tr
+              %td
+              %td
+              %td= appearer.last_name
+              %td= appearer.name
+              %td= appearer.type_appearer
+              %td= link_to 'Edit', edit_inscription_appearer_path(@inscription, appearer.id)
+              %td= link_to 'Destroy', inscription_appearer_path(@inscription, appearer.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+.container
+  .row
+    .col.s12.l12
+    %h1 Listing Compradores
+    %table#appearer-box-c
+      %thead
+        %tr
+          %th User
+          %th Num inscription
+          %th Last Name
+          %th Name
+          %th Tipo de Compareciente
+          %th
+          %th
+
+      %tbody
+        -@inscription.appearers.each do |appearer|
+          -if(appearer.type_appearer == "COMPRADOR")
+            %tr
+              %td
+              %td
+              %td= appearer.last_name
+              %td= appearer.name
+              %td= appearer.type_appearer
+
+
+=render "layouts/footer"
