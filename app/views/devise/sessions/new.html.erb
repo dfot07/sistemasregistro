@@ -1,29 +1,33 @@
 <section id="main-container">
-  <div class="container">
-    <div class="row">
-      <div class="col s12 l12 push-s1">
-        <div class="row">
-          <div class="col s5 l5 hide-on-small-only pull-s7">
-            <%= image_tag "logo.png", class: "logo" %>
-          </div>
-          <div class="col s7 l7 push-s5">
-            <div class="row">
-              <div class="signup-box">
-                <h1 class="platzigram">Log in</h1>
-                <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "signup-form" }) do |f| %>
-                  <div class="form-inputs">
-                    <%= f.input :email, required: false, autofocus: true %>
-                    <%= f.input :password, required: false %>
-                  </div>
-                  <div class="form-actions">
-                    <%= f.button :submit, "Iniciar sessión", class: "btn waves-effect waves-light btn-signup" %>
-                  </div>
-                <% end %>
+    <div class="container">
+      <div class="row">
+        <div class="col s10 push-s1">
+          <div class="row">
+            <div class="col m5 hide-on-small-only">
+             <%= image_tag "logo.png", class: "logo" %>
+            </div>
+            <div class="col s12 m7">
+              <div class="row">
+                <div class="signup-box">
+                  <h1 class="platzigram">Inicar Sesión</h1>
+                  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "signup-form" }) do |f| %>
+                    <h2>Inicia sesión con el correo electrónico y contraseña, si te has olvidado comunícate con el administrador del sistema</h2>
+                    <div class="section">
+                      
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                      <%= f.input :email, required: false, autofocus: true %>
+                      <%= f.input :password, required: false %>
+                      <%= f.button :submit, "Entrar", class: "btn waves-effect waves-light btn-signup" %>
+                    </div>
+                  <% end %>
+                </div>
               </div>
+              
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>

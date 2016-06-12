@@ -1,12 +1,54 @@
--if current_user
-  = simple_form_for [@inscription, @appearer] do |f|
-    = f.error_notification
-    
-    .form-inputs
-    = f.input :last_name
-    = f.input :name
-    = f.input :type_appearer
-    = f.input :type_representative
-    = f.input :representative
-    .form-actions
-    = f.button :submit
+-@valores = {"VENDEDOR" => "VENDEDOR", "COMPRADOR" => "COMPRADOR"}
+.container.signup-box
+  .row
+    .col.s12.l12
+      = simple_form_for [@inscription, @appearer] do |f|
+        -if @appearer.errors.any?
+          #error_explanation
+            %h3.chip
+              = "#{@appearer.errors.count} errores encontrados:"
+              <i class="material-icons">close</i>
+            %ul
+              -@appearer.errors.full_messages.each do |msg|
+                %li.chip.waves-effect.waves-light.btn-large
+                  =msg
+                  <i class="material-icons">close</i>
+        .row
+          .col.s12.l12
+            .section
+              .row
+                .col.s12
+                  .input-field.col.s12
+                    =f.text_field :last_name
+                    %label{for: "#{:last_name}", class: "active"} Apellidos
+                  .input-field.col.s12
+                    =f.text_field :name
+                    %label{for: "#{:name}", class: "active"} Nombres
+                  .input-field.col.s12
+                    %br
+                    %label{for: "#{:type_appearer}"} Calidad en la que Comparece
+                    %br
+                    %select.browser-default{name: "appearer[type_appearer]", id:"appearer_type_appearer"}
+                      %option{value: "", disabled:"", selected:""} Seleccionar...
+                      %option{value: "VENDEDOR"} VENDEDOR
+                      %option{value: "COMPRADOR"} COMRPADOR
+                  .input-field.col.s12
+                    %br
+                    %label{for: "#{:type_representative}"} Tipo de Interviniente
+                    %br
+                    %select.browser-default{name: "appearer[type_representative]", id:"appearer_type_representative"}
+                      %option{value: "", disabled:"", selected:""} Seleccionar...
+                      %option{value: "POR SUS PROPIOS DERECHOS"} POR SUS PROPIOS DERECHOS
+                      %option{value: "EN REPRESENTACIÓN"} EN REPRESENTACIÓN
+                      %option{value: "REPRESENTADO POR"} REPRESENTADO POR
+                      %option{value: "ESTIPULA"} ESTIPULA
+                      %option{value: "ESTIPULADO(A)"} STIPULADO(A)
+                  .input-field.col.s12 
+                    =f.text_field :representative
+                    %label{for: "#{:representative}", class: "active"} Persona que Representa o Le Representa
+              .row
+                .col.s12.l6
+                  %button{class:"btn btn-fb", type:"submit", name:"action"}
+                    Guardar<i class="material-icons right">send</i>
+                .col.s12.l6
+                  =link_to "Cancelar", @inscription, class: "btn btn-fb"

@@ -1,5 +1,12 @@
-%h1 Editing Appearer
+=render "layouts/navbar"
+.container.grey.lighten-3
+  .row
+    .col.s12.l12
+      .row
+        .col.s12.l12
+          %h4.center-align Editar Compareciente
+      .row
+        .col.s12.l12
+          = render 'formedit'
 
-= render 'formedit'
-
-= link_to 'Back', inscriptions_path
+=render "layouts/footer"

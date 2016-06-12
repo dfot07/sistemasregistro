@@ -1,74 +1,90 @@
 =render "layouts/navbar"
-%p
-  %b User:
-  = @inscription.user
-%p
-  %b Num inscription:
-  = @inscription.num_inscription
-%p
-  %b Act:
-  = @inscription.act
-%p
-  %b Date inscription:
-  = @inscription.date_inscription
 
-= link_to 'Edit', edit_inscription_path(@inscription)
-\|
-= link_to 'Back', inscriptions_path
-\|
-= link_to 'Ingresar Compareciente', new_inscription_appearer_path(@inscription)
-
-.container
+.container.grey.lighten-3.signup-box
   .row
-    .col.s12.l12
-    %h1 Listing Vendedores
-    %table#appearer-box-v
-      %thead
-        %tr
-          %th User
-          %th Num inscription
-          %th Last Name
-          %th Name
-          %th Tipo de Compareciente
-          %th
-          %th
+    .col.s12
+      .container
+        .row
+          .col.s12.transform-uppercase.center-align
+            %h5 Inscripción
+            %table.bordered.highlight.centered.responsive-table
+              %thead
+                %tr
+                  %th Acto o Contrato
+                  %th N° de Inscripción
+                  %th Año de Inscripción
+                  %th
+                  %th
+              %tbody
+                %tr
+                  %td= @inscription.act
+                  %td= @inscription.num_inscription
+                  %td= @inscription.date_inscription
+                  %td= link_to "Editar", edit_inscription_path(@inscription)
+                  %td= link_to "Eliminar", @inscription, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-      %tbody
-        -@inscription.appearers.each do |appearer|
-          -if(appearer.type_appearer == "VENDEDOR")
-            %tr
-              %td
-              %td
-              %td= appearer.last_name
-              %td= appearer.name
-              %td= appearer.type_appearer
-              %td= link_to 'Edit', edit_inscription_appearer_path(@inscription, appearer.id)
-              %td= link_to 'Destroy', inscription_appearer_path(@inscription, appearer.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-.container
   .row
-    .col.s12.l12
-    %h1 Listing Compradores
-    %table#appearer-box-c
-      %thead
-        %tr
-          %th User
-          %th Num inscription
-          %th Last Name
-          %th Name
-          %th Tipo de Compareciente
-          %th
-          %th
+    .col.s12
+      %ul
+        %li.col.s6
+          = link_to "Regresar", inscriptions_path, class: "btn btn-ap"
+        %li.col.s6
+          = link_to 'Nuevo Compareciente', new_inscription_appearer_path(@inscription), class: "btn btn-ap"
+  .row
+    .col.s12
+      .container
+        .row
+          .col.s12.transform-uppercase.center-align
+            %h5 Vendedores
+            %table.table-v.bordered.highlight.centered.responsive-table
+              %thead
+                %tr
+                  %th Apellidos
+                  %th Nombres
+                  %th Calidad
+                  %th Tipo de Interviniente
+                  %th Persona que Representa o Le Representa
+                  %th
+                  %th
 
-      %tbody
-        -@inscription.appearers.each do |appearer|
-          -if(appearer.type_appearer == "COMPRADOR")
-            %tr
-              %td
-              %td
-              %td= appearer.last_name
-              %td= appearer.name
-              %td= appearer.type_appearer
+              %tbody
+                -@inscription.appearers.each do |appearer|
+                  -if(appearer.type_appearer == "VENDEDOR")
+                    %tr
+                      %td= appearer.last_name
+                      %td= appearer.name
+                      %td= appearer.type_appearer
+                      %td= appearer.type_representative
+                      %td= appearer.representative
+                      %td= link_to 'Editar', edit_inscription_appearer_path(@inscription, appearer.id)
+                      %td= link_to 'Eliminar', inscription_appearer_path(@inscription, appearer.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
+  .row
+    .col.s12
+      .container
+        .row
+          .col.s12.transform-uppercase.center-align
+            %h5 Compradores
+            %table.table-v.bordered.highlight.centered.responsive-table
+              %thead
+                %tr
+                  %th Apellidos
+                  %th Nombres
+                  %th Calidad
+                  %th Tipo de Interviniente
+                  %th Persona que Representa o Le Representa
+                  %th
+                  %th
 
+              %tbody
+                -@inscription.appearers.each do |appearer|
+                  -if(appearer.type_appearer == "COMPRADOR")
+                    %tr
+                      %td= appearer.last_name
+                      %td= appearer.name
+                      %td= appearer.type_appearer
+                      %td= appearer.type_representative
+                      %td= appearer.representative
+                      %td= link_to 'Editar', edit_inscription_appearer_path(@inscription, appearer.id)
+                      %td= link_to 'Eliminar', inscription_appearer_path(@inscription, appearer.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
 =render "layouts/footer"

@@ -19,6 +19,10 @@ body {
 	max-width: 100%;
 }
 
+.transform-uppercase {
+	text-transform: uppercase;
+}
+
 .site-footer {
 	text-transform: uppercase;
 	font-size: 12px;
@@ -41,7 +45,7 @@ body {
 }
 
 .signup-form {
-	width: 65%;
+	width: 85%;
 	margin: 0 auto;
 }
 
@@ -61,4 +65,17 @@ body {
 
 .signup-form .btn.btn-signup {
 	background-color: #125688;
+}
+
+.signup-box .btn.btn-ap {
+	background-color: #0097a9;
+	font-size: .8em;
+}
+
+.signup-box .btn.btn-ap:hover {
+	background-color: #00838f;
+}
+
+.table-v {
+	font-size: .7em;
 }

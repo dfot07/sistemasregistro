@@ -1,8 +1,12 @@
 =render "layouts/navbar"
-%h1 New inscription
-
-= render 'formedit'
-
-= link_to 'Back', inscriptions_path
+.container.grey.lighten-3
+  .row
+    .col.s12.l12
+      .row
+        .col.s12.l12
+          %h4.center-align Nuevo Compareciente
+      .row
+        .col.s12.l12
+          = render 'formedit'
 
 =render "layouts/footer"
