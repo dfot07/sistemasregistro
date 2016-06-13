@@ -1,0 +1,64 @@
+.container.signup-box
+  .row
+    .col.s12.l12
+      = simple_form_for(@repertory) do |f|
+        -if @repertory.errors.any?
+          #error_explanation
+            %h3.chip
+              = "#{@repertory.errors.count} errores encontrados:"
+              <i class="material-icons">close</i>
+            %ul
+              -@repertory.errors.full_messages.each do |msg|
+                %li.chip.waves-effect.waves-light.btn-large
+                  =msg
+                  <i class="material-icons">close</i>
+
+        .row
+          .col.s12.l12
+            .section
+              .row
+                .col.s12.l12
+                  .input-field.col.s6
+                    %label{for: "#{:time_repertory}"} Hora de Ins.
+                    %br
+                    -if @repertory.time_repertory
+                      = f.text_field :time_repertory, type: "time", value: "#{@repertory.time_repertory.strftime('%H:%M')}"
+                    -else
+                      = f.text_field :time_repertory, type: "time"
+                  .input-field.col.s6
+                    %label{for: "#{:date_repertory}"} Fecha de Ins.
+                    %br
+                    = f.text_field :date_repertory, type: "date", class: "datepicker"
+              .row
+                .col.s12.l12
+                  .input-field.col.s6
+                    = f.text_field :num_repertory
+                    %label{for: "#{:num_repertory}", class: "active"} N° de Repertorio
+                  .input-field.col.s6
+                    = f.text_field :num_inscription
+                    %label{for: "#{:num_inscription}", class: "active"} N° que Corresponde
+              .row
+                .col.s12.l12
+                  .input-field.col.s12
+                    = f.text_field :document
+                    %label{for: "#{:document}", class: "active"} Naturaleza del Documento
+                  .input-field.col.s12
+                    = f.text_field :inscription
+                    %label{for: "#{:inscription}", class: "active"} Clase de Inscripción
+                  .input-field.col.s12
+                    = f.text_field :register
+                    %label{for: "#{:register}", class: "active"} Registro Parcial
+              .row
+                .col.s12.l12
+                  .input-field.col.s6
+                    = f.text_field :last_name
+                    %label{for: "#{:last_name}", class: "active"} Apellidos
+                  .input-field.col.s6
+                    = f.text_field :name
+                    %label{for: "#{:name}", class: "active"} Nombres
+              .row
+                .col.s6
+                  %button{class:"btn btn-fb", type:"submit", name:"action"}
+                    Guardar<i class="material-icons right">send</i>
+                .col.s6
+                  =link_to "Cancelar", repertories_path, class: "btn btn-fb"

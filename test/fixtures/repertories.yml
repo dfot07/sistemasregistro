@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  num_repertory: MyString
+  last_name: MyString
+  name: MyString
+  document: MyString
+  inscription: MyString
+  time_repertory: 2016-06-12 16:29:56
+  date_repertory: 2016-06-12
+  register: MyString
+  num_inscription: MyString
+
+two:
+  user_id: 
+  num_repertory: MyString
+  last_name: MyString
+  name: MyString
+  document: MyString
+  inscription: MyString
+  time_repertory: 2016-06-12 16:29:56
+  date_repertory: 2016-06-12
+  register: MyString
+  num_inscription: MyString

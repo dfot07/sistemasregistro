@@ -1,0 +1,50 @@
+=render "layouts/navbar"
+
+.container.grey.lighten-3.signup-box
+  .row
+    .col.s12.l12
+      .row
+        .col.s12.l12
+          %h1.center-align Repertorios
+        .col.s12.l12
+          = link_to new_repertory_path, class: "btn btn-fb" do
+            <i class="medium material-icons left">note_add</i>Nuevo Repertorio
+      .row
+        .col.s12.l12
+          %table.table-v.striped.highlight.centered.responsive-table
+            %thead
+              %tr
+                %th Usuario
+                %th Hora de Ins.
+                %th Fecha de Ins.
+                %th N° de Repertorio
+                %th N° que Corresponde
+                %th Naturaleza del Documento
+                %th Clase de Inscripción
+                %th Registro Parcial
+                %th Apellidos
+                %th Nombres
+                %th
+                %th
+                %th
+
+            %tbody
+              - @repertories.each do |repertory|
+                %tr
+                  %td= repertory.user.email
+                  %td= repertory.time_repertory.strftime("%H:%M")
+                  %td= repertory.date_repertory
+                  %td= repertory.num_repertory
+                  %td= repertory.num_inscription
+                  %td= repertory.document
+                  %td= repertory.inscription
+                  %td= repertory.register
+                  %td= repertory.last_name
+                  %td= repertory.name
+                  %td= link_to 'Ver', repertory
+                  %td= link_to 'Editar', edit_repertory_path(repertory)
+                  %td
+                    = link_to repertory, :method => :delete, :data => { :confirm => 'Are you sure?' } do
+                      <i class="small material-icons left">delete</i>
+
+=render "layouts/footer"

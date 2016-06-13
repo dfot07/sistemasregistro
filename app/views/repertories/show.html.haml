@@ -1,0 +1,44 @@
+=render "layouts/navbar"
+
+.container.grey.lighten-3.signup-box
+  .row
+    .col.s12
+      .row
+        .col.s12.transform-uppercase.center-align
+          %h5 Repertorio N°: #{@repertory.num_repertory}
+      .row
+        .col.s12.l12
+          %table.table-v.bordered.highlight.centered.responsive-table
+            %thead
+              %tr
+                %th Hora de Ins.
+                %th Fecha de Ins.
+                %th N° que Corresponde
+                %th Naturaleza del Documento
+                %th Clase de Inscripción
+                %th Registro Parcial
+                %th Apellidos
+                %th Nombres
+                %th
+                %th
+            %tbody
+              %tr
+                %td= @repertory.time_repertory.strftime("%H:%M")
+                %td= @repertory.date_repertory
+                %td= @repertory.num_inscription
+                %td= @repertory.document
+                %td= @repertory.inscription
+                %td= @repertory.register
+                %td= @repertory.last_name
+                %td= @repertory.name
+                %td= link_to "Editar", edit_repertory_path(@repertory)
+                %td= link_to "Eliminar", @repertory, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  .row
+    .col.s12
+      %ul
+        %li.col.s6
+          = link_to "Regresar", repertories_path, class: "btn btn-ap"
+        %li.col.s6
+          = link_to 'Nuevo Repertorio', new_repertory_path, class: "btn btn-ap"
+
+=render "layouts/footer"

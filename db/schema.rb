@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607205729) do
+ActiveRecord::Schema.define(version: 20160612212956) do
 
   create_table "appearers", force: :cascade do |t|
     t.integer  "user_id"
@@ -38,6 +38,23 @@ ActiveRecord::Schema.define(version: 20160607205729) do
   end
 
   add_index "inscriptions", ["user_id"], name: "index_inscriptions_on_user_id"
+
+  create_table "repertories", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "num_repertory"
+    t.string   "last_name"
+    t.string   "name"
+    t.string   "document"
+    t.string   "inscription"
+    t.time     "time_repertory"
+    t.date     "date_repertory"
+    t.string   "register"
+    t.string   "num_inscription"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "repertories", ["user_id"], name: "index_repertories_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

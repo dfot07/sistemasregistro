@@ -28,21 +28,79 @@
                     %br
                     %label{for: "#{:type_appearer}"} Calidad en la que Comparece
                     %br
-                    %select.browser-default{name: "appearer[type_appearer]", id:"appearer_type_appearer"}
-                      %option{value: "", disabled:"", selected:""} Seleccionar...
-                      %option{value: "VENDEDOR"} VENDEDOR
-                      %option{value: "COMPRADOR"} COMRPADOR
+                    -if @appearer.type_appearer
+                      -if @appearer.type_appearer == "VENDEDOR"
+                        %select.browser-default{name: "appearer[type_appearer]", id:"appearer_type_appearer"}
+                          %option{value: "", disabled:""} Seleccionar...
+                          %option{value: "VENDEDOR", selected:""} VENDEDOR
+                          %option{value: "COMPRADOR"} COMRPADOR
+                      -else
+                        %select.browser-default{name: "appearer[type_appearer]", id:"appearer_type_appearer"}
+                          %option{value: "", disabled:""} Seleccionar...
+                          %option{value: "VENDEDOR"} VENDEDOR
+                          %option{value: "COMPRADOR", selected:""} COMRPADOR
+                    -else
+                      %select.browser-default{name: "appearer[type_appearer]", id:"appearer_type_appearer"}
+                        %option{value: "", disabled:"", selected:""} Seleccionar...
+                        %option{value: "VENDEDOR"} VENDEDOR
+                        %option{value: "COMPRADOR"} COMRPADOR
                   .input-field.col.s12
                     %br
                     %label{for: "#{:type_representative}"} Tipo de Interviniente
                     %br
-                    %select.browser-default{name: "appearer[type_representative]", id:"appearer_type_representative"}
-                      %option{value: "", disabled:"", selected:""} Seleccionar...
-                      %option{value: "POR SUS PROPIOS DERECHOS"} POR SUS PROPIOS DERECHOS
-                      %option{value: "EN REPRESENTACIÓN"} EN REPRESENTACIÓN
-                      %option{value: "REPRESENTADO POR"} REPRESENTADO POR
-                      %option{value: "ESTIPULA"} ESTIPULA
-                      %option{value: "ESTIPULADO(A)"} STIPULADO(A)
+                    -if @appearer.type_representative
+                      -if @appearer.type_representative == "POR SUS PROPIOS DERECHOS"
+                        %select.browser-default{name: "appearer[type_representative]", id:"appearer_type_representative"}
+                          %option{value: "", disabled:""} Seleccionar...
+                          %option{value: "POR SUS PROPIOS DERECHOS", selected:""} POR SUS PROPIOS DERECHOS
+                          %option{value: "EN REPRESENTACIÓN"} EN REPRESENTACIÓN
+                          %option{value: "REPRESENTADO POR"} REPRESENTADO POR
+                          %option{value: "ESTIPULA"} ESTIPULA
+                          %option{value: "ESTIPULADO(A)"} ESTIPULADO(A)
+                      -else
+                        -if @appearer.type_representative == "EN REPRESENTACIÓN"
+                          %select.browser-default{name: "appearer[type_representative]", id:"appearer_type_representative"}
+                            %option{value: "", disabled:""} Seleccionar...
+                            %option{value: "POR SUS PROPIOS DERECHOS"} POR SUS PROPIOS DERECHOS
+                            %option{value: "EN REPRESENTACIÓN", selected:""} EN REPRESENTACIÓN
+                            %option{value: "REPRESENTADO POR"} REPRESENTADO POR
+                            %option{value: "ESTIPULA"} ESTIPULA
+                            %option{value: "ESTIPULADO(A)"} ESTIPULADO(A)
+                        -else
+                          -if @appearer.type_representative == "REPRESENTADO POR"
+                            %select.browser-default{name: "appearer[type_representative]", id:"appearer_type_representative"}
+                              %option{value: "", disabled:""} Seleccionar...
+                              %option{value: "POR SUS PROPIOS DERECHOS"} POR SUS PROPIOS DERECHOS
+                              %option{value: "EN REPRESENTACIÓN"} EN REPRESENTACIÓN
+                              %option{value: "REPRESENTADO POR", selected:""} REPRESENTADO POR
+                              %option{value: "ESTIPULA"} ESTIPULA
+                              %option{value: "ESTIPULADO(A)"} ESTIPULADO(A)
+                          -else
+                            -if @appearer.type_representative == "ESTIPULA"
+                              %select.browser-default{name: "appearer[type_representative]", id:"appearer_type_representative"}
+                                %option{value: "", disabled:""} Seleccionar...
+                                %option{value: "POR SUS PROPIOS DERECHOS"} POR SUS PROPIOS DERECHOS
+                                %option{value: "EN REPRESENTACIÓN"} EN REPRESENTACIÓN
+                                %option{value: "REPRESENTADO POR"} REPRESENTADO POR
+                                %option{value: "ESTIPULA", selected:""} ESTIPULA
+                                %option{value: "ESTIPULADO(A)"} ESTIPULADO(A)
+                            -else
+                              -if @appearer.type_representative == "ESTIPULADO(A)"
+                                %select.browser-default{name: "appearer[type_representative]", id:"appearer_type_representative"}
+                                  %option{value: "", disabled:""} Seleccionar...
+                                  %option{value: "POR SUS PROPIOS DERECHOS"} POR SUS PROPIOS DERECHOS
+                                  %option{value: "EN REPRESENTACIÓN"} EN REPRESENTACIÓN
+                                  %option{value: "REPRESENTADO POR"} REPRESENTADO POR
+                                  %option{value: "ESTIPULA", selected:""} ESTIPULA
+                                  %option{value: "ESTIPULADO(A)", selected:""} ESTIPULADO(A)
+                    -else
+                      %select.browser-default{name: "appearer[type_representative]", id:"appearer_type_representative"}
+                        %option{value: "", disabled:"", selected:""} Seleccionar...
+                        %option{value: "POR SUS PROPIOS DERECHOS"} POR SUS PROPIOS DERECHOS
+                        %option{value: "EN REPRESENTACIÓN"} EN REPRESENTACIÓN
+                        %option{value: "REPRESENTADO POR"} REPRESENTADO POR
+                        %option{value: "ESTIPULA"} ESTIPULA
+                        %option{value: "ESTIPULADO(A)"} ESTIPULADO(A)
                   .input-field.col.s12 
                     =f.text_field :representative
                     %label{for: "#{:representative}", class: "active"} Persona que Representa o Le Representa
