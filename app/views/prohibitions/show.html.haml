@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @prohibition.user
+%p
+  %b Last name:
+  = @prohibition.last_name
+%p
+  %b Name:
+  = @prohibition.name
+%p
+  %b Type prohibition:
+  = @prohibition.type_prohibition
+%p
+  %b Inscription:
+  = @prohibition.inscription
+%p
+  %b Date inscription:
+  = @prohibition.date_inscription
+
+= link_to 'Edit', edit_prohibition_path(@prohibition)
+\|
+= link_to 'Back', prohibitions_path

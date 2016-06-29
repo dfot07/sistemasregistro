@@ -1,0 +1,13 @@
+= simple_form_for(@prohibition) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :user
+    = f.input :last_name
+    = f.input :name
+    = f.input :type_prohibition
+    = f.input :inscription
+    = f.input :date_inscription
+
+  .form-actions
+    = f.button :submit

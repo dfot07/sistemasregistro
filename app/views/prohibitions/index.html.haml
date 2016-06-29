@@ -1,0 +1,31 @@
+%h1 Listing prohibitions
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Last name
+      %th Name
+      %th Type prohibition
+      %th Inscription
+      %th Date inscription
+      %th
+      %th
+      %th
+
+  %tbody
+    - @prohibitions.each do |prohibition|
+      %tr
+        %td= prohibition.user
+        %td= prohibition.last_name
+        %td= prohibition.name
+        %td= prohibition.type_prohibition
+        %td= prohibition.inscription
+        %td= prohibition.date_inscription
+        %td= link_to 'Show', prohibition
+        %td= link_to 'Edit', edit_prohibition_path(prohibition)
+        %td= link_to 'Destroy', prohibition, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Prohibition', new_prohibition_path

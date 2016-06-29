@@ -33,6 +33,8 @@ gem 'devise'
 
 gem 'jquery-turbolinks'
 
+gem 'mysql2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

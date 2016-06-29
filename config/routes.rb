@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :prohibitions
   resources :repertories
   resources :inscriptions do
     resources :appearers
