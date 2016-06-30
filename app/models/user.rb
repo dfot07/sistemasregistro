@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   has_many :inscriptions
   has_many :appearers
   has_many :repertories
+  has_many :prohibitions
 end

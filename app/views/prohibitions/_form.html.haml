@@ -1,13 +1,40 @@
-= simple_form_for(@prohibition) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.association :user
-    = f.input :last_name
-    = f.input :name
-    = f.input :type_prohibition
-    = f.input :inscription
-    = f.input :date_inscription
-
-  .form-actions
-    = f.button :submit
+.container.signup-box
+  .row
+    .col.s12.l12
+      = simple_form_for @prohibition do |f|
+        -if @prohibition.errors.any?
+          #error_explanation
+            %h3.chip
+              = "#{@prohibition.errors.count} errores encontrados:"
+              <i class="material-icons">close</i>
+            %ul
+              -@prohibition.errors.full_messages.each do |msg|
+                %li.chip.waves-effect.waves-light.btn-large
+                  =msg
+                  <i class="material-icons">close</i>
+        .row
+          .col.s12.l12
+            .section
+              .row
+                .col.s12.l12
+                  .input-field.col.s12.l12
+                    =f.text_field :last_name
+                    %label{for: "#{:last_name}", class: "active"} Apellidos
+                  .input-field.col.s12.l12
+                    =f.text_field :name
+                    %label{for: "#{:name}", class: "active"} Nombres
+                  .input-field.col.s12.l12
+                    =f.text_field :type_prohibition
+                    %label{for: "#{:type_prohibition}", class: "active"} Tipo de Acto
+                  .input-field.col.s12.l12
+                    =f.text_field :inscription
+                    %label{for: "#{:inscription}", class: "active"} Número de Inscripción
+                  .input-field.col.s12.l12
+                    =f.text_field :date_inscription
+                    %label{for: "#{:date_inscription}", class: "active"} Año de Inscripción
+              .row
+                .col.s12.l6
+                  %button{class:"btn btn-fb", type:"submit", name:"action"}
+                    Guardar<i class="material-icons right">send</i>
+                .col.s12.l6
+                  =link_to "Cancelar", prohibitions_path, class: "btn btn-fb"

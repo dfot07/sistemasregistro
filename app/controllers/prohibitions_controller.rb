@@ -1,5 +1,6 @@
 class ProhibitionsController < ApplicationController
   before_action :set_prohibition, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /prohibitions
   # GET /prohibitions.json
@@ -24,7 +25,7 @@ class ProhibitionsController < ApplicationController
   # POST /prohibitions
   # POST /prohibitions.json
   def create
-    @prohibition = Prohibition.new(prohibition_params)
+    @prohibition = current_user.prohibitions.new(prohibition_params)
 
     respond_to do |format|
       if @prohibition.save

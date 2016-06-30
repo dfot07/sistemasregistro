@@ -1,31 +1,42 @@
-%h1 Listing prohibitions
+=render "layouts/navbar"
 
-%table
-  %thead
-    %tr
-      %th User
-      %th Last name
-      %th Name
-      %th Type prohibition
-      %th Inscription
-      %th Date inscription
-      %th
-      %th
-      %th
+.container.grey.lighten-3.signup-box
+  .row
+    .col.s12.l12
+      .row
+        .col.s12.l12
+          %h1.center-align Gravámenes y Prohibiciones
+        .col.s12.l12
+          = link_to new_prohibition_path, class: "btn btn-fb" do
+            <i class="medium material-icons left">note_add</i>Nueva Inscripción
+      .row
+        .col.s6.l12
+          %table.striped.highlight.centered.responsive-table
+            %thead
+              %tr
+                %th Usuario
+                %th Ń° Inscripción
+                %th Año de Inscripción
+                %th Tipo de Acto
+                %th Apellidos
+                %th Nombres
+                %th
+                %th
+                %th
 
-  %tbody
-    - @prohibitions.each do |prohibition|
-      %tr
-        %td= prohibition.user
-        %td= prohibition.last_name
-        %td= prohibition.name
-        %td= prohibition.type_prohibition
-        %td= prohibition.inscription
-        %td= prohibition.date_inscription
-        %td= link_to 'Show', prohibition
-        %td= link_to 'Edit', edit_prohibition_path(prohibition)
-        %td= link_to 'Destroy', prohibition, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            %tbody
+              - @prohibitions.each do |prohibition|
+                %tr
+                  %td= prohibition.user.email
+                  %td= prohibition.inscription
+                  %td= prohibition.date_inscription
+                  %td= prohibition.type_prohibition
+                  %td= prohibition.last_name
+                  %td= prohibition.name
+                  %td= link_to 'Ver', prohibition
+                  %td= link_to 'Editar', edit_prohibition_path(prohibition)
+                  %td
+                    = link_to prohibition, :method => :delete, :data => { :confirm => 'Are you sure?' } do
+                      <i class="small material-icons left">delete</i>
 
-%br
-
-= link_to 'New Prohibition', new_prohibition_path
+=render "layouts/footer"

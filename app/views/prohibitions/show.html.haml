@@ -1,24 +1,38 @@
-%p#notice= notice
+=render "layouts/navbar"
 
-%p
-  %b User:
-  = @prohibition.user
-%p
-  %b Last name:
-  = @prohibition.last_name
-%p
-  %b Name:
-  = @prohibition.name
-%p
-  %b Type prohibition:
-  = @prohibition.type_prohibition
-%p
-  %b Inscription:
-  = @prohibition.inscription
-%p
-  %b Date inscription:
-  = @prohibition.date_inscription
+.container.grey.lighten-3.signup-box
+  .row
+    .col.s12
+      .row
+        .col.s12.transform-uppercase.center-align
+          %h5 #{@prohibition.type_prohibition} N°: #{@prohibition.inscription}
+      .row
+        .col.s12.l12
+          %table.table-v.bordered.highlight.centered.responsive-table
+            %thead
+              %tr
+                %th N° de Ins.
+                %th Fecha de Ins.
+                %th Tipo de Acto
+                %th Apellidos
+                %th Nombres
+                %th
+                %th
+            %tbody
+              %tr
+                %td= @prohibition.inscription
+                %td= @prohibition.date_inscription
+                %td= @prohibition.type_prohibition
+                %td= @prohibition.last_name
+                %td= @prohibition.name
+                %td= link_to "Editar", edit_prohibition_path(@prohibition)
+                %td= link_to "Eliminar", @prohibition, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  .row
+    .col.s12
+      %ul
+        %li.col.s6
+          = link_to "Regresar", prohibitions_path, class: "btn btn-ap"
+        %li.col.s6
+          = link_to 'Nuevo Repertorio', new_prohibition_path, class: "btn btn-ap"
 
-= link_to 'Edit', edit_prohibition_path(@prohibition)
-\|
-= link_to 'Back', prohibitions_path
+=render "layouts/footer"

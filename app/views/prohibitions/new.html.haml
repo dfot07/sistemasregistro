@@ -1,5 +1,12 @@
-%h1 New prohibition
+=render "layouts/navbar"
+.container.grey.lighten-3
+  .row
+    .col.s12.l12
+      .row
+        .col.s12.l12
+          %h1.center-align Nueva Inscripción
+      .row
+        .col.s12.l12
+          = render 'form'
 
-= render 'form'
-
-= link_to 'Back', prohibitions_path
+=render "layouts/footer"
